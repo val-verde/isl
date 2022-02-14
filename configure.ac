@@ -125,6 +125,13 @@ AC_SUBST(WARNING_FLAGS)
 PACKAGE_CFLAGS="$MP_CPPFLAGS"
 PACKAGE_LDFLAGS="$MP_LDFLAGS"
 PACKAGE_LIBS="-lisl $MP_LIBS"
+
+case $host_os in
+  cygwin* | mingw*)
+     LDFLAGS="${LDFLAGS} -no-undefined"
+     ;;
+esac
+
 AX_CREATE_PKGCONFIG_INFO
 
 AX_DETECT_GIT_HEAD
